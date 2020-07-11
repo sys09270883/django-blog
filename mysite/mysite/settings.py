@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetag2',
     'bookmark.apps.BookmarkConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
@@ -121,3 +123,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 50
