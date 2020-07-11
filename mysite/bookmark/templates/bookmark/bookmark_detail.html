@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Bookmark detail</title>
+	{% extends 'base.html' %}
+	{% block title %}Bookmark detail{% endblock %}
 </head>
 <body>
-<div id="content">
+{% block content %}
 	<h1>{{ object.title }}</h1>
 	<ul>
 		<li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
 	</ul>
-</div>
+{% endblock %}
 </body>
 </html>

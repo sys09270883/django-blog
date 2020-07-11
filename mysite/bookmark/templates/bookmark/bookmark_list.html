@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Bookmark list</title>
+	{% extends 'base.html' %}
+	{% block title %}Bookmark list{% endblock %}
 </head>
 <body>
-<div id="content">
-	<h1>Bookmark List</h1>
+{% block content %}
+<h1>Bookmark List</h1>
 	<ul>
 		{% for bookmark in object_list %}
 			<li><a href="{% url 'bookmark:detail' bookmark.id %}">{{ bookmark }}</a></li>
 		{% endfor %}
 	</ul>
-</div>
+{% endblock %}
 </body>
 </html>

@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Post details</title>
+	{% extends 'base.html' %}
+	{% block title %}Post details{% endblock %}
 </head>
 <body>
+{% block content %}
 <h2>{{ object.title }}</h2>
 
 <p>
@@ -30,6 +32,6 @@
 	{{ object.content|linebreaks }}
 </div>
 
-
+{% endblock %}
 </body>
 </html>
