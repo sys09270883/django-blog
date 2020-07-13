@@ -35,12 +35,11 @@
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
 					<a class="dropdown-item" href="{% url 'blog:post_archive' %}">Archive</a>
-					<a class="dropdown-item" href="{% url 'blog:post_search' %}">Search</a>
 				</div>
 			</li>
 		</ul>
 
-		<form class="form-inline my-2" action="" method="post">
+		<form class="form-inline my-2" action="{% url 'blog:post_search' %}" method="post">
 			{% csrf_token %}
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_word">
 		</form>
