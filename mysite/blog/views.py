@@ -61,15 +61,21 @@ class TaggedObjectLV(ListView):
 
 
 class SearchFormView(FormView):
-	form_class = PostSearchForm
-	template_name = 'blog/post_search.html'
+    form_class = PostSearchForm
+    template_name = 'blog/post_search.html'
 
-	def form_valid(self, form):
-		searchWord = form.cleaned_data['search_word']
-		post_list = Post.objects.filter(Q(title__icontains=searchWord) | Q(description__icontains=searchWord) | Q(content__icontains=searchWord).distinct())
-		context = {}
-		context['form'] = form
-		context['search_term'] = searchWord
-		context['object_list'] = post_list
-		return render(self.request, self.template_name, context)
+    def form_valid(self, form):
+        search_word = form.cleaned_data['search_word']
+        post_list = Post.objects.filter(
+            Q(title__icontains=search_word) |
+            Q(description__icontains=search_word) |
+            Q(content__icontains=search_word)
+        ).distinct()
 
+        context = {
+            'form': form,
+            'search_term': search_word,
+            'object_list': post_list
+        }
+
+        return render(self.request, self.template_name, context)
