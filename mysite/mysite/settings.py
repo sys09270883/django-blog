@@ -16,17 +16,23 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Load secrets
+ROOT_DIR = os.path.dirname(BASE_DIR)
+CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
+CONFIG_SECRET_JSON = os.path.join(CONFIG_SECRET_DIR, 'secrets.json')
+CONFIG_SECRET = json.loads(open(CONFIG_SECRET_JSON).read())
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*4z%-1yp=oz63p5ndd0eziew6h-ko-r$1=5q(xqh27gir18=+8'
+SECRET_KEY = CONFIG_SECRET['django']['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = CONFIG_SECRET['django']['ALLOWED_HOST']
 
 
 # Application definition
@@ -130,17 +136,10 @@ USE_TZ = True
 TAGGIT_CASE_INSENSITIVE = True
 TAGGIT_LIMIT = 50
 
-
-# Load AWS settings
-ROOT_DIR = os.path.dirname(BASE_DIR)
-CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
-CONFIG_SECRET_AWS_DIR = os.path.join(CONFIG_SECRET_DIR, 'aws_setting.json')
-CONFIG_AWS = json.loads(open(CONFIG_SECRET_AWS_DIR).read())
-
-AWS_ACCESS_KEY_ID = CONFIG_AWS['django']['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = CONFIG_AWS['django']['AWS_SECRET_ACCESS_KEY']
-AWS_S3_REGION_NAME = CONFIG_AWS['django']['AWS_S3_REGION_NAME']
-AWS_STORAGE_BUCKET_NAME = CONFIG_AWS['django']['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = CONFIG_SECRET['aws']['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = CONFIG_SECRET['aws']['AWS_SECRET_ACCESS_KEY']
+AWS_S3_REGION_NAME = CONFIG_SECRET['aws']['AWS_S3_REGION_NAME']
+AWS_STORAGE_BUCKET_NAME = CONFIG_SECRET['aws']['AWS_STORAGE_BUCKET_NAME']
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 AWS_DEFAULT_ACL = 'public-read'
 
