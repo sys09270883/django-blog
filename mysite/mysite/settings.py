@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     'bookmark.apps.BookmarkConfig',
@@ -125,14 +127,27 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 50
+
+
+# Load AWS settings
+ROOT_DIR = os.path.dirname(BASE_DIR)
+CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
+CONFIG_SECRET_AWS_DIR = os.path.join(CONFIG_SECRET_DIR, 'aws_setting.json')
+CONFIG_AWS = json.loads(open(CONFIG_SECRET_AWS_DIR).read())
+
+AWS_ACCESS_KEY_ID = CONFIG_AWS['django']['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = CONFIG_AWS['django']['AWS_SECRET_ACCESS_KEY']
+AWS_S3_REGION_NAME = CONFIG_AWS['django']['AWS_S3_REGION_NAME']
+AWS_STORAGE_BUCKET_NAME = CONFIG_AWS['django']['AWS_STORAGE_BUCKET_NAME']
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
+AWS_DEFAULT_ACL = 'public-read'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_STORAGE = 'mysite.storage.S3StaticStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
-
-TAGGIT_CASE_INSENSITIVE = True
-TAGGIT_LIMIT = 50
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'mysite.storage.S3MediaStorage'
