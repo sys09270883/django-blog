@@ -12,14 +12,9 @@
 	<h1>Blog Search</h1>
 	<br>
 
-	<form method="post" action=".">
+	<form action="." method="post">
 		{% csrf_token %}
-
-		<div class="form-group">
-			{{ form.search_word }}
-		</div>
-
-		<button type="submit" class="btn btn-primary btn-sm">Search!</button>
+		<input type="text" class="form-control" placeholder="Enter your search term." name="search_word">
 	</form>
 
 	<br>
