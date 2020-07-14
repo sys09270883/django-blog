@@ -38,10 +38,12 @@ ALLOWED_HOSTS = CONFIG_SECRET['django']['ALLOWED_HOST']
 # Application definition
 
 INSTALLED_APPS = [
+    'sorl.thumbnail',
     'storages',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     'bookmark.apps.BookmarkConfig',
+    'photo.apps.PhotoConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
