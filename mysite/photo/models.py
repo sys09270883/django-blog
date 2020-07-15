@@ -28,7 +28,7 @@ class Photo(models.Model):
     upload_dt = models.DateTimeField('Upload Date', auto_now_add=True)
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('pk', 'title',)
 
     def __str__(self):
         return self.title

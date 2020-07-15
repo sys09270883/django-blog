@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% extends 'base.html' %}
+	{% load sorl_thumbnail %}
+	{% block title %}Photo Detail{% endblock %}
+</head>
+<body>
+{% block content %}
+	<h2 class="mt-5">
+		{{ object.title }}
+	</h2>
+	<div class="row">
+		<div class="col-md-3">
+			<a href="{{ object.get_absolute_url }}">
+				{% thumbnail object.image "128x128" crop="center" as im %}
+				<img src="{{ im.url }}" width="100%">
+				{% endthumbnail %}
+			</a>
+		</div>
+		<ul class="col-md-9 list-inline">
+			<li class="h5 list-inline-item">Photo Description</li>
+			{% if object.description %}
+				<p>{{ object.description|linebreaks }}</p>
+			{% else %}
+				<p>(blank)</p>
+			{% endif %}
+			<li class="h5 list-inline-item">Date Uploaded</li>
+				<p>
+					{{ object.upload_dt|date:"Y-m-d" }}
+				</p>
+			<li class="h5 list-inline-item">Album Name</li>
+				<p class="font-italic">
+					<a href="{% url 'photo:album_detail' object.album.id %}">
+						{{ object.album.name }}
+					</a>
+				</p>
+
+		</ul>
+	</div>
+{% endblock %}
+
+</body>
+</html>
