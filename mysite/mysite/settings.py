@@ -38,6 +38,7 @@ ALLOWED_HOSTS = CONFIG_SECRET['django']['ALLOWED_HOST']
 # Application definition
 
 INSTALLED_APPS = [
+    'widget_tweaks',
     'sorl.thumbnail',
     'storages',
     'taggit.apps.TaggitAppConfig',
