@@ -47,34 +47,52 @@
 	<hr style="margin: 10px 0;">
 
 	<div class="row row-cols-1 row-cols-md-2">
-		<div class="col-sm-6" align="center">
+		<div class="col-sm-4" align="center">
 			<div class="card" style="width: 18rem;" align="center">
-				<img src="{% static 'img/bookmark.svg' %}" class="card-img-top">
+				<img src="{% static 'img/bookmark.svg' %}" class="card-img-top" height="300">
 				<div class="card-body">
 					<h5 class="card-title">Bookmark App</h5>
                     <p class="card-text">
-	                    Bookmark is a Uniform Resource Identifier(URI)
-	                    that is stored for later retrieval in any of various storage formats.
-	                    You can store your own bookmarks by Bookmark application.
-	                    It's also possible to update or delete your bookmarks.
+	                    <i class="fas fa-quote-left"></i>
+	                    <span class="h6">
+							&ensp;유용한 웹사이트&ensp;
+	                    </span>
+                        <i class="fas fa-quote-right"></i>
                     </p>
 				</div>
 				<a href="{% url 'bookmark:index' %}" class="btn btn-primary">Go bookmark!</a>
 			</div>
 		</div>
-		<div class="col-sm-6" align="center">
+		<div class="col-sm-4" align="center">
 			<div class="card" style="width: 18rem;" align="center">
-				<img src="{% static 'img/blog.svg' %}" class="card-img-top">
+				<img src="{% static 'img/blog.svg' %}" class="card-img-top" height="300">
 				<div class="card-body">
 					<h5 class="card-title">Blog App</h5>
                     <p class="card-text">
-	                    This application makes it possible to log daily events or
-	                    write your own interest such as hobbies, techniques, etc.
-	                    A typical blog combines text, digital images, and links
-	                    to other blogs, web pages, and other media related to its topic.
+                        <i class="fas fa-quote-left"></i>
+	                    <span class="h6">
+		                    &ensp;컴퓨터 공부 포스팅&ensp;
+	                    </span>
+                        <i class="fas fa-quote-right"></i>
                     </p>
 				</div>
 				<a href="{% url 'blog:index' %}" class="btn btn-primary">Go blog!</a>
+			</div>
+		</div>
+		<div class="col-sm-4" align="center">
+			<div class="card" style="width: 18rem;" align="center">
+				<img src="{% static 'img/photo.svg' %}" class="card-img-top" height="300">
+				<div class="card-body">
+					<h5 class="card-title">Photo App</h5>
+                    <p class="card-text">
+                        <i class="fas fa-quote-left"></i>
+	                    <span class="h6">
+							&ensp;귀여운 이미지들&ensp;
+	                    </span>
+                        <i class="fas fa-quote-right"></i>
+                    </p>
+				</div>
+				<a href="{% url 'blog:index' %}" class="btn btn-primary">Go photo!</a>
 			</div>
 		</div>
 	</div>
