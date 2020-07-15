@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Bookmark
-from mysite.mysite.views import OwnerOnlyMixin
+from mysite.views import OwnerOnlyMixin
 
 
 class BookmarkLV(ListView):
