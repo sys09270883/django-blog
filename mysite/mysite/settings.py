@@ -152,3 +152,5 @@ STATICFILES_STORAGE = 'mysite.storage.S3StaticStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_FILE_STORAGE = 'mysite.storage.S3MediaStorage'
+
+LOGIN_REDIRECT_URL = '/'
