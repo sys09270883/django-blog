@@ -9,6 +9,13 @@ class Album(models.Model):
         max_length=100,
         blank=True
     )
+    owner = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+        verbose_name='OWNER',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ('name',)
@@ -26,6 +33,13 @@ class Photo(models.Model):
     description = models.TextField('Photo Description', blank=True)
     image = models.ImageField('IMAGE', upload_to='SorlPhoto/%Y')
     upload_dt = models.DateTimeField('Upload Date', auto_now_add=True)
+    owner = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+        verbose_name='OWNER',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ('pk', 'title',)
