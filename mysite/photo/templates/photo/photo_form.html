@@ -34,7 +34,7 @@
 			{{ form.album|add_class:"form-control" }}
 		</div>
 		<div class="col-sm-2 my-auto">
-			<a href="{% url 'photo:album_add' %}" class="btn btn-outline-primary">
+			<a href="{% url 'photo:album_add' %}" class="btn btn-info">
 				Add Album
 			</a>
 		</div>
@@ -42,14 +42,14 @@
 
 	<div class="form-group row">
 		{{ form.title|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-		<div class="col-sm-5">
+		<div class="col-sm-8">
 			{{ form.title|add_class:"form-control"|attr:"autofocus" }}
 		</div>
 	</div>
 
 	<div class="form-group row">
 		{{ form.image|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-		<div class="col-sm-5">
+		<div class="col-sm-8">
 			{{ form.image|add_class:"form-control-file" }}
 		</div>
 	</div>
@@ -62,8 +62,8 @@
 	</div>
 
 	<div class="form-group">
-		<div class="offset-sm-2 col-sm-5">
-			<input type="submit" value="Submit" class="btn btn-info">
+		<div class="container">
+			<input type="submit" value="Submit" class="btn btn-info btn-lg btn-block">
 		</div>
 	</div>
 </form>
