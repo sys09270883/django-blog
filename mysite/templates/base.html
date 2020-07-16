@@ -8,37 +8,41 @@
 </head>
 <body style="padding-top:90px;">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-	<span class="navbar-brand mx-5 mb-0 font-weight-bold font-italic">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top bg-dark navbar-dark">
+	<span class="navbar-brand mx-5 mb-0 font-weight-bold font-italic bg-dark">
 		<a class="nav-line text-white" href="{% url 'home' %}">
 			Django-blog
 		</a>
 	</span>
 
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+	<button class="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item mx-1 btn btn-primary">
+			<li class="nav-item mx-1 btn btn-dark">
 				<a class="nav-link text-white" href="{% url 'bookmark:index' %}">Bookmark</a>
 			</li>
-			<li class="nav-item mx-1 btn btn-primary">
+			<li class="nav-item mx-1 btn btn-dark">
 				<a class="nav-link text-white" href="{% url 'blog:index' %}">Blog</a>
 			</li>
-			<li class="nav-item mx-1 btn btn-primary">
+			<li class="nav-item mx-1 btn btn-dark">
 				<a class="nav-link text-white" href="{% url 'photo:index' %}">Photo</a>
 			</li>
-			<li class="nav-item dropdown mx-1 btn btn-primary">
+			<li class="nav-item dropdown mx-1 btn btn-dark">
 				<a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">Util</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
 					<a class="dropdown-item" href="{% url 'blog:post_archive' %}">Archive</a>
 				</div>
 			</li>
-			<li class="nav-item dropdown mx-1 btn btn-primary">
+			<li class="nav-item dropdown mx-1 btn btn-dark">
+				{% if user.is_active %}
 				<a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">Add</a>
+				{% else %}
+				<a class="nav-link dropdown-toggle text-white disabled" href="#" data-toggle="dropdown">Add</a>
+				{% endif %}
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="{% url 'bookmark:add' %}">Bookmark</a>
 					<a class="dropdown-item" href="{% url 'blog:add' %}">Post</a>
@@ -47,8 +51,12 @@
 					<a class="dropdown-item" href="{% url 'photo:photo_add' %}">Photo</a>
 				</div>
 			</li>
-			<li class="nav-item dropdown mx-1 btn btn-primary">
+			<li class="nav-item dropdown mx-1 btn btn-dark">
+				{% if user.is_active %}
 				<a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">Change</a>
+				{% else %}
+				<a class="nav-link dropdown-toggle text-white disabled" href="#" data-toggle="dropdown">Change</a>
+				{% endif %}
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="{% url 'bookmark:change' %}">Bookmark</a>
 					<a class="dropdown-item" href="{% url 'blog:change' %}">Post</a>
@@ -66,7 +74,7 @@
 		</form>
 
 		<ul class="navbar-nav ml-5 mr-5">
-			<li class="nav-item dropdown mx-1 btn btn-primary">
+			<li class="nav-item dropdown mx-1 btn btn-secondary">
 				{% if user.is_active %}
 				<a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
 					<i class="fas fa-user"></i>
