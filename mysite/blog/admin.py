@@ -1,8 +1,9 @@
 from django.contrib import admin
 from .models import Post
+from markdownx.admin import MarkdownxModelAdmin
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(MarkdownxModelAdmin):
     list_display = ('id', 'title', 'modify_dt', 'tag_list')
     list_filter = ('modify_dt',)
     search_fields = ('title', 'content')

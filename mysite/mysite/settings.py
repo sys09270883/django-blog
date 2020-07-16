@@ -38,6 +38,7 @@ ALLOWED_HOSTS = CONFIG_SECRET['django']['ALLOWED_HOST']
 # Application definition
 
 INSTALLED_APPS = [
+    'markdownx',
     'widget_tweaks',
     'sorl.thumbnail',
     'storages',
@@ -155,3 +156,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_FILE_STORAGE = 'mysite.storage.S3MediaStorage'
 
 LOGIN_REDIRECT_URL = '/'
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',
+    'markdown.extensions.toc',
+    'markdown.extensions.codehilite',
+    'markdown.extensions.fenced_code',
+]
+
+MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
+    'markdown.extensions.codehilite': {
+        'linenums': True,
+        'use_pygments': True,
+        'noclasses': True
+    }
+}

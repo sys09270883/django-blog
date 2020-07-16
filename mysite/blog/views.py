@@ -103,7 +103,7 @@ class PostChangeLV(LoginRequiredMixin, ListView):
 
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
     model = Post
-    fields = ['title', 'slug', 'description', 'content', 'tags']
+    fields = ['title', 'description', 'content', 'tags']
     success_url = reverse_lazy('blog:index')
 
 
