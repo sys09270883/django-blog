@@ -27,12 +27,12 @@ CONFIG_SECRET = json.loads(open(CONFIG_SECRET_JSON).read())
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG_SECRET['django']['SECRET_KEY']
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = CONFIG_SECRET['django']['ALLOWED_HOST']
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -140,10 +140,10 @@ USE_TZ = True
 TAGGIT_CASE_INSENSITIVE = True
 TAGGIT_LIMIT = 50
 
-AWS_ACCESS_KEY_ID = CONFIG_SECRET['aws']['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = CONFIG_SECRET['aws']['AWS_SECRET_ACCESS_KEY']
-AWS_S3_REGION_NAME = CONFIG_SECRET['aws']['AWS_S3_REGION_NAME']
-AWS_STORAGE_BUCKET_NAME = CONFIG_SECRET['aws']['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 AWS_DEFAULT_ACL = 'public-read'
 
